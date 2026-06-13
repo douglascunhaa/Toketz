@@ -10,11 +10,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const PremiumScene = dynamic(() => import("@/components/PremiumScene"), { ssr: false });
 const FrameField = dynamic(() => import("@/components/FrameField"), { ssr: false });
 
+const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const asset = (path: string) => `${assetBase}${path}`;
+
 const ventures = [
   {
     label: "Clube de Benefícios",
     name: "Minha Corrida",
-    logo: "/assets/logoMinhaCorrida.svg",
+    logo: asset("/assets/logoMinhaCorrida.svg"),
     width: 260,
     height: 84,
     copy: "Experiências digitais para comunidades, provas e jornadas de corrida.",
@@ -22,7 +25,7 @@ const ventures = [
   {
     label: "Studio de Branding e Design",
     name: "Z3",
-    logo: "/assets/logoZ3.png",
+    logo: asset("/assets/logoZ3.png"),
     width: 265,
     height: 232,
     copy: "Branding, operação e design para marcas que precisam sair do plano e ganhar presença.",
@@ -31,7 +34,7 @@ const ventures = [
   {
     label: "Escola de Inovação e Design",
     name: "Brandscan",
-    logo: "/assets/logoBrandscan.svg",
+    logo: asset("/assets/logoBrandscan.svg"),
     width: 375,
     height: 105,
     copy: "Leitura estratégica de marca para transformar presença em inteligência acionável.",
@@ -44,7 +47,7 @@ const principles = [
   { icon: BadgeCheck, title: "Resultado", copy: "Tecnologia e design trabalhando para impacto mensurável." },
 ];
 
-const footerImages = Array.from({ length: 8 }, (_, index) => `/assets/img_rodape_${index + 1}.jpg`);
+const footerImages = Array.from({ length: 8 }, (_, index) => asset(`/assets/img_rodape_${index + 1}.jpg`));
 
 export default function Home() {
   const mainRef = useRef<HTMLElement>(null);
@@ -96,13 +99,13 @@ export default function Home() {
       <FrameField />
 
       <section className="premiumHero" aria-label="Toketz Premium">
-        <video className="heroVideo" autoPlay muted loop playsInline poster="/assets/banner.jpg" aria-hidden="true">
-          <source src="/assets/tok-banner-video.mp4" type="video/mp4" />
+        <video className="heroVideo" autoPlay muted loop playsInline poster={asset("/assets/banner.jpg")} aria-hidden="true">
+          <source src={asset("/assets/tok-banner-video.mp4")} type="video/mp4" />
         </video>
         <div className="blueprintGrid" />
         <div className="heroVeil" />
         <nav className="topbar" data-hero>
-          <Image src="/assets/logoToketz.svg" alt="Toketz" width={178} height={58} priority />
+          <Image src={asset("/assets/logoToketz.svg")} alt="Toketz" width={178} height={58} priority />
           <a href="#contato" className="navAction">
             contato <ArrowUpRight size={18} />
           </a>
@@ -130,7 +133,7 @@ export default function Home() {
 
           <div className="heroSceneWrap" data-hero>
             <PremiumScene />
-            <Image src="/assets/simbolo toketz.svg" alt="" width={118} height={92} className="sceneMark" priority />
+            <Image src={asset("/assets/simbolo toketz.svg")} alt="" width={118} height={92} className="sceneMark" priority />
           </div>
         </div>
 
@@ -170,7 +173,7 @@ export default function Home() {
 
       <section id="manifesto" className="manifestoPremium">
         <div className="manifestoMedia" data-parallax>
-          <Image src="/assets/background_manifesto.jpg" alt="" fill sizes="45vw" loading="eager" />
+          <Image src={asset("/assets/background_manifesto.jpg")} alt="" fill sizes="45vw" loading="eager" />
         </div>
         <div className="manifestoText" data-reveal>
           <span className="eyebrow">Manifesto</span>
@@ -220,7 +223,7 @@ export default function Home() {
 
       <section className="founderPremium">
         <div className="founderPortrait" data-reveal>
-          <Image src="/assets/foto_luiz.png" alt="Luiz Carlos Santos" width={325} height={326} loading="eager" />
+          <Image src={asset("/assets/foto_luiz.png")} alt="Luiz Carlos Santos" width={325} height={326} loading="eager" />
         </div>
         <div className="founderCopy" data-reveal>
           <span className="eyebrow">Quem está por trás?</span>
